@@ -1,0 +1,37 @@
+name: Upstream Sync
+
+on:
+  schedule:
+    - cron: '0 7 * * 1,4'
+  workflow_dispatch:
+
+jobs:
+  sync_latest:
+    runs-on: ubuntu-latest
+    name: Sync latest commits from upstream
+    steps:
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/mason-org/mason-registry.git || true
+          git remote set-url upstream --push no-push
+      - name: Fetch upstream
+        run: git fetch upstream
+      - name: Rebase onto upstream/main
+        id: rebase
+        run: |
+          git checkout main
+          git rebase upstream/main
+        continue-on-error: true
+      - name: Fail on rebase conflict
+        if: steps.rebase.outcome == 'failure'
+        run: |
+          echo "Rebase conflict detected – resolve manually."
+          exit 1
+      - name: Push rebased main
+        run: |
+          git push origin main --force-with-lease
