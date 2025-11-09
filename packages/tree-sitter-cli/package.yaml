@@ -34,6 +34,8 @@ source:
     - target: win_x86
       file: tree-sitter-cli-windows-x86.zip
       bin: tree-sitter.exe
-
+    - target: win_arm64
+      file: tree-sitter-cli-windows-arm64.zip
+      bin: tree-sitter.exe
 bin:
   tree-sitter: "{{source.asset.bin}}"
