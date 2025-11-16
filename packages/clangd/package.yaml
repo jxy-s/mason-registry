@@ -24,6 +24,9 @@ source:
     - target: win_x64
       file: clangd-windows-{{version}}.zip
       bin: clangd_{{version}}/bin/clangd.exe
+    - target: win_arm64  # ARM64EC
+      file: clangd-windows-{{version}}.zip
+      bin: clangd_{{version}}/bin/clangd.exe
 
 schemas:
   lsp: vscode:https://raw.githubusercontent.com/clangd/vscode-clangd/master/package.json
