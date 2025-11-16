@@ -37,6 +37,9 @@ source:
     - target: win_x86
       file: taplo-windows-x86.zip
       bin: taplo.exe
+    - target: win_arm64
+      file: taplo-windows-aarch64.zip
+      bin: taplo.exe
 
 bin:
   taplo: "{{source.asset.bin}}"

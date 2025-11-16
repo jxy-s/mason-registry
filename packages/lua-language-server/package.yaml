@@ -30,6 +30,9 @@ source:
     - target: win_x64
       file: lua-language-server-{{version}}-win32-x64.zip
       bin: bin/lua-language-server.exe
+    - target: win_arm64  # ARM64EC
+      file: lua-language-server-{{version}}-win32-x64.zip
+      bin: bin/lua-language-server.exe
 
   version_overrides:
     - constraint: semver:<=3.8.3
