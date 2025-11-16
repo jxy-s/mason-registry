@@ -33,6 +33,9 @@ source:
     - target: win_x64
       file: codelldb-win32-x64.vsix
       bin: extension/adapter/codelldb.exe
+    - target: win_arm64  # ARM64EC
+      file: codelldb-win32-x64.vsix
+      bin: extension/adapter/codelldb.exe
 
   version_overrides:
     - constraint: semver:<=v1.10.0
