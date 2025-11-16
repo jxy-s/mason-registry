@@ -33,6 +33,9 @@ source:
     - target: win_x64
       file: zls-x86_64-windows.zip
       bin: zls.exe
+    - target: win_arm64
+      file: aarch64-windows.tar.zst
+      bin: bin/zls.exe
 
   version_overrides:
     - constraint: semver:<=0.11.0
